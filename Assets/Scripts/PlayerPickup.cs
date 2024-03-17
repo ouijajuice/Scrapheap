@@ -12,6 +12,7 @@ public class PlayerPickup : MonoBehaviour
     public Transform holdPos;
 
     private bool hitObjectKnown;
+
     void Update()
     {
         RaycastHit hit;
@@ -24,12 +25,10 @@ public class PlayerPickup : MonoBehaviour
 
             PickupableObject hitScript = hitObject.GetComponent<PickupableObject>();
 
-            hitScript.beingHit = true;
-
-            Renderer hitRenderer = hitObject.GetComponent<Renderer>();
-
             if (hitObject.CompareTag(pickupableTag))
             {
+                Renderer hitRenderer = hitObject.GetComponent<Renderer>();
+                hitScript.beingHit = true;
                 hitRenderer.material.color = Color.blue;
             }
 
@@ -45,7 +44,6 @@ public class PlayerPickup : MonoBehaviour
                     {
                         if (hitObject.CompareTag(pickupableTag))
                         {
-
                             hitObject.transform.position = holdPos.position;
                             hitObject.transform.rotation = holdPos.rotation;
                             Rigidbody hitRb = hitObject.GetComponent<Rigidbody>();
