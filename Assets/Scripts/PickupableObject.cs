@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class PickupableObject : MonoBehaviour
 {
-    public bool beingHit = false;
+    public bool beingHit;
 
     private void Start()
     {
-        beingHit = false;
+        //beingHit = false;
     }
     // Update is called once per frame
     void Update()
     {
-        if (!beingHit)
-        {
-            this.gameObject.GetComponent<Renderer>().material.color = Color.white;
-        }
-        else
+        if (beingHit)
         {
             this.gameObject.GetComponent<Renderer>().material.color = Color.blue;
         }
+        else if (!beingHit)
+        {
+            this.gameObject.GetComponent<Renderer>().material.color = Color.white;
+        }
+        beingHit = false;
         
     }
 }

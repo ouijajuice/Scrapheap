@@ -23,13 +23,11 @@ public class PlayerPickup : MonoBehaviour
         {
             GameObject hitObject = hit.transform.gameObject;
 
-            PickupableObject hitScript = hitObject.GetComponent<PickupableObject>();
-
             if (hitObject.CompareTag(pickupableTag))
             {
-                Renderer hitRenderer = hitObject.GetComponent<Renderer>();
+                PickupableObject hitScript = hitObject.GetComponent<PickupableObject>();
                 hitScript.beingHit = true;
-                hitRenderer.material.color = Color.blue;
+                Debug.Log("Hitting object.");
             }
 
 
@@ -62,7 +60,8 @@ public class PlayerPickup : MonoBehaviour
                 {
                     if (hitObject.CompareTag(pickupableTag))
                     {
-                        hitScript.beingHit = false;
+                        PickupableObject hitScript = hitObject.GetComponent<PickupableObject>();
+                        hitScript.beingHit = true;                                             //////////fix this, this is why things arent highlighting blue anymore
                         hitObject.GetComponent<Rigidbody>().isKinematic = false;
                         hitObject.transform.parent = null;
                         
