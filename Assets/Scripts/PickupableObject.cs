@@ -15,7 +15,7 @@ public class PickupableObject : MonoBehaviour
     {
         if (beingHit)
         {
-            this.gameObject.GetComponent<Renderer>().material.color = Color.blue;
+            this.gameObject.GetComponent<Renderer>().material.color = new Color(0.22f, 1f, 1f);
         }
         else if (!beingHit)
         {

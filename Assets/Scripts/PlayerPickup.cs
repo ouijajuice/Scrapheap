@@ -13,6 +13,8 @@ public class PlayerPickup : MonoBehaviour
 
     private bool hitObjectKnown;
 
+    private bool holding = false;
+
     void Update()
     {
         RaycastHit hit;
@@ -21,22 +23,32 @@ public class PlayerPickup : MonoBehaviour
 
         if (hitSomething)
         {
+            
+
             GameObject hitObject = hit.transform.gameObject;
 
             if (hitObject.CompareTag(pickupableTag))
             {
                 PickupableObject hitScript = hitObject.GetComponent<PickupableObject>();
                 hitScript.beingHit = true;
-                Debug.Log("Hitting object.");
+                radioScript radioScript = hitObject.GetComponent<radioScript>();
+                if (radioScript != null)
+                {
+                    if (Input.GetButtonDown("Fire2"))
+                    {
+                        radioScript.songIndex = radioScript.songIndex + 1;
+                    }
+                }
+                //Debug.Log("Hitting object.");
             }
 
 
             if (Input.GetButton("Fire1"))
             {
 
-                if (hitSomething)
+                if (hitSomething && !holding)
                 {
-
+                    holding = true;
                     hitObjectKnown = true;
                     if (hitObjectKnown)
                     {
@@ -56,6 +68,7 @@ public class PlayerPickup : MonoBehaviour
             }
             else if (!Input.GetButton("Fire1"))
             {
+                holding = false;
                 if (hitSomething)
                 {
                     if (hitObject.CompareTag(pickupableTag))
