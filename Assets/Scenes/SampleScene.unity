@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -249,7 +249,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91868091}
   serializedVersion: 2
-  m_Mass: 4
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -290,9 +290,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 91868093}
   speed: 2.5
-  jumpForce: 25
+  jumpForce: 6
   groundCheck: {fileID: 1511306224}
-  groundCheckDistance: 1
+  groundCheckDistance: 0.85
 --- !u!65 &91868098
 BoxCollider:
   m_ObjectHideFlags: 0
